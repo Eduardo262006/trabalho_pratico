@@ -1,15 +1,13 @@
-
 .venv/
 venv/
 env/
 
 .env
 
-data/
+data/raw/
+data/interim/
+data/processed/
 
 __pycache__/
-*.py[cod]
-*$py.class
-
-.DS_Store
-Thumbs.db
+*.pyc
+.ipynb_checkpoints/
