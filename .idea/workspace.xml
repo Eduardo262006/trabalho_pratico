@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72e083fd-82f1-4662-a6e2-efdab1e7a5c6" name="Changes" comment="worldbank commit">
+    <list default="true" id="72e083fd-82f1-4662-a6e2-efdab1e7a5c6" name="Changes" comment="melhoramento do worldbank commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extracao/worldbank.py" beforeDir="false" afterPath="$PROJECT_DIR$/extracao/worldbank.py" afterDir="false" />
     </list>
@@ -23,18 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Eduardo262006"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Eduardo262006&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Eduardo262006/trabalho_pratico.git",
-    "accountId": "07a4a65a-3a2d-4793-8a50-1f4a1f44c83e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Eduardo262006/trabalho_pratico.git&quot;,
+    &quot;accountId&quot;: &quot;07a4a65a-3a2d-4793-8a50-1f4a1f44c83e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -49,8 +49,9 @@
     "Python.main.executor": "Run",
     "Python.worldbank.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Programming/CodePython/MyModules/ubi/ETD/projeto",
+    "last_opened_file_path": "C:/Programming/CodePython/MyModules/ubi/ETD/trabalho_pratico",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,7 +102,11 @@
       <option name="presentableId" value="Default" />
       <updated>1778859137920</updated>
       <workItem from="1778859139115" duration="148000" />
-      <workItem from="1778859294055" duration="4770000" />
+      <workItem from="1778859294055" duration="5561000" />
+      <workItem from="1779116094279" duration="715000" />
+      <workItem from="1779484663326" duration="895000" />
+      <workItem from="1779533495119" duration="28000" />
+      <workItem from="1779661370049" duration="924000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -119,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778859914849</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="melhoramento do worldbank commit">
+      <option name="closed" value="true" />
+      <created>1778866552050</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778866552050</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,10 +141,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="worldbank commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="worldbank commit" />
+    <MESSAGE value="melhoramento do worldbank commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="melhoramento do worldbank commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/trabalho_pratico$worldbank.coverage" NAME="worldbank Coverage Results" MODIFIED="1778864662292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extracao" />
-    <SUITE FILE_PATH="coverage/trabalho_pratico$main.coverage" NAME="main Coverage Results" MODIFIED="1778862892970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/trabalho_pratico$worldbank.coverage" NAME="worldbank Coverage Results" MODIFIED="1779661605887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extracao" />
+    <SUITE FILE_PATH="coverage/trabalho_pratico$main.coverage" NAME="main Coverage Results" MODIFIED="1779484666176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
