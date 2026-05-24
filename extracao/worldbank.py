@@ -7,7 +7,7 @@ indicators = {
     'Crescimento_PIB': 'NY.GDP.MKTP.KD.ZG',
     'PIB_per_capita': 'NY.GDP.PCAP.CD',
     'CO2_produzido_por_unidade_do_PIB': 'EN.GHG.CO2.RT.GDP.KD',
-    'CO2_per_capita': 'EN.ATM.CO2E.PC',
+    'CO2_per_capita': 'EN.GHG.CO2.PC.CE.AR5',
     'Inflação(% anual)': 'FP.CPI.TOTL.ZG',
     'Desemprego(% trabalhadores)': 'SL.UEM.TOTL.ZS',
     'Divida_do_Governo(% PIB)': 'GC.DOD.TOTL.GD.ZS',
