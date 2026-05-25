@@ -10,32 +10,23 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class NasaPowerExtractor:
     def __init__(self, output_dir="data/raw", community="RE"):
-        """
-        Inicializa o extrator da NASA POWER.
-        :param output_dir: Diretório onde os dados brutos serão guardados.
-        :param community: Comunidade da NASA (RE = Renewable Energy, AG = Agroclimatology).
-        """
-        # O endpoint base já reflete a nossa decisão: temporal/monthly/point
         self.base_url = "https://power.larc.nasa.gov/api/temporal/monthly/point"
         self.output_dir = output_dir
         self.community = community
         
-        # Garante a existência da pasta raw (imutabilidade)
+        # Garante que a pasta existe
         os.makedirs(self.output_dir, exist_ok=True)
         
-        # Uso de uma Session melhora a performance em múltiplos pedidos HTTP para o mesmo host
+        # O uso de Session melhora a performance e gere a ligação TCP
         self.session = requests.Session()
 
     def _make_request_with_retry(self, params, max_retries=4, base_backoff=2):
         """
-        Faz o pedido HTTP com Exponential Backoff.
-        Se falhar, espera 2s, depois 4s, depois 8s, etc., até max_retries.
+        Faz o pedido HTTP com Exponential Backoff para proteger o pipeline.
         """
         for attempt in range(max_retries):
             try:
                 response = self.session.get(self.base_url, params=params, timeout=15)
-                
-                # O método raise_for_status() dispara uma exceção para códigos 4xx e 5xx
                 response.raise_for_status()
                 
                 return response.json()
@@ -43,19 +34,17 @@ class NasaPowerExtractor:
             except RequestException as e:
                 logging.warning(f"Tentativa {attempt + 1}/{max_retries} falhou: {e}")
                 
-                # Se for a última tentativa, desiste e propaga o erro
                 if attempt == max_retries - 1:
                     logging.error("Número máximo de tentativas atingido. A extração falhou.")
                     raise e
                 
-                # Exponential Backoff: 2s, 4s, 8s...
                 sleep_time = base_backoff ** (attempt + 1)
                 logging.info(f"A aguardar {sleep_time} segundos antes de tentar novamente...")
                 time.sleep(sleep_time)
 
     def extract_centroid_data(self, country_code, lat, lon, start_year, end_year, parameters="T2M,T2M_MAX,T2M_MIN"):
         """
-        Orquestra a extração para um país e guarda o JSON bruto.
+        Extrai os dados para o ponto centroid do país e guarda num ficheiro JSON.
         """
         logging.info(f"A iniciar extração da NASA POWER para {country_code} ({start_year}-{end_year})...")
         
@@ -72,7 +61,8 @@ class NasaPowerExtractor:
         raw_data = self._make_request_with_retry(params)
         
         safe_params = parameters.split(",")[0] 
-        filename = f"extracao_nasa_{start_year}_a_{end_year}.json"
+        filename = f"nasa_{country_code.lower()}.json"
+        
         filepath = os.path.join(self.output_dir, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
