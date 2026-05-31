@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "DuckDB",
+            "database": "${workspaceFolder:trabalho_pratico}/data/database/analytical_warehouse.duckdb",
+            "name": "Data Warehouse"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
