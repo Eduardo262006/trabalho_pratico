@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import os
 
 country = 'PT'
 
@@ -26,7 +27,17 @@ indicators = {
     'Incricoes_Escolares': 'SE.PRM.ENRR'
 }
 
-final_df = pd.DataFrame()
+# 1. Descobrir onde este script está guardado (.../trabalho_pratico/src/extract)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Subir dois níveis para chegar à raiz do projeto (.../trabalho_pratico)
+project_root = os.path.abspath(os.path.join(script_dir, '..', '..'))
+
+# 3. Juntar a raiz do projeto com o caminho desejado (data/raw)
+output_dir = os.path.join(project_root, 'data', 'raw')
+
+# Garantir que a pasta existe (cria a pasta caso não exista)
+os.makedirs(output_dir, exist_ok=True)
 
 for name, code in indicators.items():
 
@@ -39,18 +50,16 @@ for name, code in indicators.items():
     if len(response) > 1 and response[1] is not None:
         temp_df = pd.DataFrame(response[1])
 
+        # Filtrar as colunas e renomear
         temp_df = temp_df[['date', 'value']]
         temp_df.columns = ['Ano', name]
 
-        if final_df.empty:
-            final_df = temp_df
-        else:
-            final_df = pd.merge(final_df, temp_df, on='Ano')
+        # Guardar num CSV individual para este indicador
+        file_path = os.path.join(output_dir, f"{name}.csv")
+        temp_df.to_csv(file_path, index=False)
+        print(f"-> Ficheiro guardado com sucesso em: {file_path}")
+
     else:
         print(f"Aviso: Não foram encontrados dados para o indicador {name}")
 
-if not final_df.empty:
-    final_df.to_csv("worldbank_pt.csv", index=False)
-    print("Dados foram guaradados em 'worldbank_pt.csv'.")
-else:
-    print("Erro: Nenhum dado foi recuperado.")
+print("\nProcesso concluído!")
