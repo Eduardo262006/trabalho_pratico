@@ -10,7 +10,7 @@ from src.load.duckdb_loader import DuckDBLoader
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
-    logging.info("Extração, Transformação, Carregamento ")
+    logging.info("=== A iniciar o Pipeline de Dados - SEMANA 3 (ETL Completo com DuckDB) ===")
     
     country_code = "PT"
     start_year = "2000"
