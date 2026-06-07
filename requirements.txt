@@ -1,0 +1,7 @@
+requests
+pandas
+pyarrow
+duckdb
+harlequin
+streamlit
+plotly

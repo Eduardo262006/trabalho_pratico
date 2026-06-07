@@ -957,7 +957,7 @@
     "header": {
         "title": "NASA/POWER Source Native Resolution Monthly and Annual",
         "api": {
-            "version": "v2.9.4",
+            "version": "v2.9.2",
             "name": "POWER Monthly and Annual API"
         },
         "sources": [
@@ -985,7 +985,7 @@
         }
     },
     "times": {
-        "data": 0.489,
+        "data": 0.275,
         "process": 0.01
     }
 }
