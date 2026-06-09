@@ -50,6 +50,6 @@ class GoldMerger:
         df_gold.to_parquet(parquet_out, index=False)
         df_gold.to_csv(csv_out, index=False)
         
-        logging.info(f"VITÓRIA! Camada Gold criada com sucesso.")
+        logging.info(f"Camada Gold criada com sucesso.")
         logging.info(f"O Dataset Final tem {df_gold.shape[0]} linhas e {df_gold.shape[1]} colunas.")
         logging.info(f"Ficheiros guardados em: {self.curated_dir}/")

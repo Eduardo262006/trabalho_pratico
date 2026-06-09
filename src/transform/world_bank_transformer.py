@@ -64,4 +64,4 @@ else:
     print(f"-> Total de valores nulos no ficheiro final: {total_nulos} (Tem de ser 0!)")
 
     if total_nulos == 0:
-        
+        print("O ficheiro final está limpo e pronto para a Transformação.")

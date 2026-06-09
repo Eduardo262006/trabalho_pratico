@@ -27,16 +27,12 @@ indicators = {
     'Incricoes_Escolares': 'SE.PRM.ENRR'
 }
 
-# 1. Descobrir onde este script está guardado (.../trabalho_pratico/src/extract)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# 2. Subir dois níveis para chegar à raiz do projeto (.../trabalho_pratico)
 project_root = os.path.abspath(os.path.join(script_dir, '..', '..'))
 
-# 3. Juntar a raiz do projeto com o caminho desejado (data/raw)
 output_dir = os.path.join(project_root, 'data', 'raw')
 
-# Garantir que a pasta existe (cria a pasta caso não exista)
 os.makedirs(output_dir, exist_ok=True)
 
 for name, code in indicators.items():
@@ -50,11 +46,9 @@ for name, code in indicators.items():
     if len(response) > 1 and response[1] is not None:
         temp_df = pd.DataFrame(response[1])
 
-        # Filtrar as colunas e renomear
         temp_df = temp_df[['date', 'value']]
         temp_df.columns = ['Ano', name]
 
-        # Guardar num CSV individual para este indicador
         file_path = os.path.join(output_dir, f"{name}.csv")
         temp_df.to_csv(file_path, index=False)
         print(f"-> Ficheiro guardado com sucesso em: {file_path}")

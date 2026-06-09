@@ -1,7 +1,44 @@
+# ==========================================
+# 1. Ambientes Virtuais e Segredos
+# ==========================================
 .venv/
 venv/
 env/
 .env
+
+# ==========================================
+# 2. Python / Caches
+# ==========================================
 __pycache__/
 *.pyc
+*.pyo
 .ipynb_checkpoints/
+
+# ==========================================
+# 3. Dados e Bases de Dados (CRÍTICO)
+# ==========================================
+# Ignora todo o conteúdo das pastas de dados...
+data/raw/*
+data/staging/*
+data/curated/*
+data/database/*
+
+# ...mas não ignora ficheiros .gitkeep (para manter a estrutura de pastas)
+!data/raw/.gitkeep
+!data/staging/.gitkeep
+!data/curated/.gitkeep
+!data/database/.gitkeep
+
+# Ignora por extensão (camada de segurança extra)
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.csv
+*.json
+
+# ==========================================
+# 4. Editores de Código e Sistema Operativo
+# ==========================================
+.vscode/
+.DS_Store
+Thumbs.db

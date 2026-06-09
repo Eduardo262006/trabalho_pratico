@@ -5,7 +5,6 @@ import logging
 import requests
 from requests.exceptions import RequestException
 
-# Configuração simples de logging para o terminal
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class NasaPowerExtractor:
@@ -14,10 +13,8 @@ class NasaPowerExtractor:
         self.output_dir = output_dir
         self.community = community
         
-        # Garante que a pasta existe
         os.makedirs(self.output_dir, exist_ok=True)
         
-        # O uso de Session melhora a performance e gere a ligação TCP
         self.session = requests.Session()
 
     def _make_request_with_retry(self, params, max_retries=4, base_backoff=2):

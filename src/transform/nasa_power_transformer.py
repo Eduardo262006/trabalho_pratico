@@ -24,7 +24,7 @@ class NasaPowerTransformer:
         records = []
         for date_key, value in param_data.items():
             if date_key.endswith("13"):
-                ano = int(date_key[:4])  # Extrai os primeiros 4 caracteres e converte para int
+                ano = int(date_key[:4])  
                 records.append({
                     "Ano": ano,
                     "Codigo_Pais": country_code,
@@ -39,24 +39,18 @@ class NasaPowerTransformer:
         filepath = os.path.join(self.input_dir, filename)
         logging.info(f"A iniciar transformação do ficheiro: {filename}")
 
-        # 1. Carregar o JSON Bruto
         with open(filepath, 'r', encoding='utf-8') as f:
             raw_data = json.load(f)
 
-        # 2. Extrair o dicionário principal de parâmetros
         parameters = raw_data.get("properties", {}).get("parameter", {})
 
-        # Extrair o Código do País do nome do ficheiro (ex: raw_nasa_T2M_PT_2000_2023.json)
         parts = filename.replace('.json', '').split('_')
         country_code = parts[1].upper() 
 
-        # 3. Transformar cada parâmetro num DataFrame individual
         df_t2m = self._extract_annual_data(parameters.get("T2M", {}), "T2M_Media_Anual", country_code)
         df_t2m_max = self._extract_annual_data(parameters.get("T2M_MAX", {}), "T2M_Maxima_Anual", country_code)
         df_t2m_min = self._extract_annual_data(parameters.get("T2M_MIN", {}), "T2M_Minima_Anual", country_code)
 
-        # 4. Juntar (Merge) os DataFrames criados usando 'Ano' e 'Codigo_Pais' como chave
-        # O 'reduce' aplica o pd.merge sequencialmente a todos os DataFrames não vazios
         dfs = [df for df in [df_t2m, df_t2m_max, df_t2m_min] if not df.empty]
         if not dfs:
             logging.warning("Nenhum dado anual (mês 13) foi encontrado.")
@@ -64,10 +58,8 @@ class NasaPowerTransformer:
 
         df_final = reduce(lambda left, right: pd.merge(left, right, on=["Ano", "Codigo_Pais"], how="outer"), dfs)
 
-        # 5. Ordenar cronologicamente e resetar o índice
         df_final = df_final.sort_values(by="Ano").reset_index(drop=True)
 
-        # 6. Guardar na camada Staging (Silver) em formato Parquet
         out_filename = f"staging_nasa_{country_code}.parquet"
         out_filepath = os.path.join(self.output_dir, out_filename)
         

@@ -48,7 +48,7 @@ class DuckDBLoader:
             
             sample = conn.execute(f"SELECT Ano, Amplitude_Termica, Crescimento_PIB FROM {table_name} LIMIT 2").df()
             
-            logging.info(f"VITÓRIA! Carregamento concluído. {count} registos inseridos e consolidados na base de dados.")
+            logging.info(f"Carregamento concluído. {count} registos inseridos e consolidados na base de dados.")
             logging.info(f"Amostra consultável (via SQL):\n{sample}")
             logging.info(f"O teu Data Warehouse está pronto em: {self.db_path}")
             
